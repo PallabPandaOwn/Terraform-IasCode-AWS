@@ -9,7 +9,7 @@ resource "aws_eip" "ip" {
 }
 
 resource "aws_s3_bucket" "s3bucket" {
-  bucket = "Terraform-Bucket"
+  bucket = "terraformbucket2020"
 }
 
 resource "aws_instance" "TerraformExer" {
