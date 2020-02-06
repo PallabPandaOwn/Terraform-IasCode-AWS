@@ -1,2 +1,2 @@
 # Terraform-IasCode-AWS
-Infrastruture as code aws using terraform
+Infrastruture as code aws using Terraforrm
