@@ -5,7 +5,7 @@ provider "aws" {
 }
 resource "aws_eip" "ip" {
   vpc      = true
-  instance = aws_instance.TerraformExer.id
+  instance = "${aws_instance.TerraformExer.id}"
 }
 
 resource "aws_s3_bucket" "s3bucket" {
