@@ -2,6 +2,9 @@ provider "aws" {
   shared_credentials_file = "C://Users//pallab.panda//.aws//credentials"
   profile                 = "ivanti"
   region                  = "us-east-1"
+
+
+
 }
 resource "aws_eip" "ip" {
   vpc      = true
@@ -11,6 +14,9 @@ resource "aws_eip" "ip" {
 resource "aws_s3_bucket" "s3bucket" {
   bucket = "terraformbucket2020"
 }
+
+
+
 
 resource "aws_instance" "TerraformExer" {
   ami           = "ami-062f7200baf2fa504"
