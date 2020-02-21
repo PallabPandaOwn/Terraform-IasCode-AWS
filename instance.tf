@@ -21,6 +21,9 @@ resource "aws_s3_bucket" "s3bucket" {
 resource "aws_instance" "TerraformExer" {
   ami           = "ami-062f7200baf2fa504"
   instance_type = "t2.micro"
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.TerraformExer.public_ip} > ip_address.txt"
+  }
   depends_on    = [aws_s3_bucket.s3bucket]
 }
 
