@@ -18,6 +18,7 @@ variable "mymap" {
   type = map(string)
   default = { mykey1 = "value1" }
 }
+#List variable
 
 ####################################
 
