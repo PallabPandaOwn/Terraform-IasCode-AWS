@@ -14,3 +14,15 @@ variable "AMIS" {
     us-east-1 = "ami-062f7200baf2fa504"
   }
 }
+
+variable "PATH_TO_PRIVATE_KEY" {
+  #default = "mykey"
+}
+
+variable "PATH_TO_PUBLIC_KEY" {
+
+}
+
+variable "INSTANCE_USERNAME" {
+  # default = "ec2-user"
+}

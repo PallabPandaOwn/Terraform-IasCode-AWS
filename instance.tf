@@ -1,46 +1,23 @@
-#AWS provider
-# provider "aws" {
-#   shared_credentials_file = "C://Users//pallab.panda//.aws//credentials"
-#   profile                 = "ivanti"
-#   region                  = "us-east-1"
-# }
-#variable declaration
-
-#String type variable
-
-# variable "myvar" {
-#   type    = "string"
-#   default = "Hello Terraform"
-# }
-#Map Type variable
-
-# variable "mymap" {
-#   type = map(string)
-#   default = { mykey1 = "value1" }
-# }
-#List variable
-
-####################################
-
-#resource decaration
-
-# resource "aws_eip" "ip" {
-#   vpc      = true
-#   instance = "${aws_instance.TerraformExer.id}"
-# }
-# resource "aws_s3_bucket" "s3bucket" {
-#   bucket = "terraformbucket2020"
-# }
+resource "aws_key_pair" "mypubkey" {
+  key_name   = "mypubkey"
+  public_key = "${file("${var.PATH_TO_PUBLIC_KEY}")}" #Read public key content here
+}
 resource "aws_instance" "TerraformExer" { # frist instance spinning
   ami           = "${lookup(var.AMIS, var.AWS_REGION)}"
   instance_type = "t2.micro"
-  # provisioner "local-exec" {
-  #   command = "echo ${aws_instance.TerraformExer.public_ip} > ip_address.txt"
-  # }
-  # depends_on = [aws_s3_bucket.s3bucket]
+  key_name      = "${aws_key_pair.mypubkey.key_name}"
+  provisioner "file" {
+    source      = "script.sh"
+    destination = "/tmp"
+    connection {
+    host        = "${aws_instance.TerraformExer.public_ip}"
+    type        = "ssh"
+    user        = "${var.INSTANCE_USERNAME}"
+    private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
+  }
+  }
 }
 ########################################
-
 output "outputjson" {
   value = "${aws_instance.TerraformExer}"
 }
