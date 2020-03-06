@@ -16,11 +16,11 @@ variable "AMIS" {
 }
 
 variable "PATH_TO_PRIVATE_KEY" {
-  #default = "mykey"
+  default = "./keys/mypubkey"
 }
 
 variable "PATH_TO_PUBLIC_KEY" {
-
+  default = "./keys/mypubkey.pub"
 }
 
 variable "INSTANCE_USERNAME" {
