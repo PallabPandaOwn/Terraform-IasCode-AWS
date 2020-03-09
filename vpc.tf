@@ -104,16 +104,16 @@ resource "aws_route_table" "pallab-test-terraform-public" {
 
 # route associations public subnet
 resource "aws_route_table_association" "main-public-1-a" {
-  subnet_id      = aws_subnet.main-public-1.id
-  route_table_id = aws_route_table.main-public.id
+  subnet_id      = aws_subnet.pallab-test-terraform-public-1.id
+  route_table_id = aws_route_table.pallab-test-terraform-public.id
 }
 
 resource "aws_route_table_association" "main-public-2-a" {
-  subnet_id      = aws_subnet.main-public-2.id
-  route_table_id = aws_route_table.main-public.id
+  subnet_id      = aws_subnet.pallab-test-terraform-public-2.id
+  route_table_id = aws_route_table.pallab-test-terraform-public.id
 }
 
 resource "aws_route_table_association" "main-public-3-a" {
-  subnet_id      = aws_subnet.main-public-3.id
-  route_table_id = aws_route_table.main-public.id
+  subnet_id      = aws_subnet.pallab-test-terraform-public-3.id
+  route_table_id = aws_route_table.pallab-test-terraform-public.id
 }
