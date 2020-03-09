@@ -11,14 +11,20 @@ resource "aws_instance" "TerraformExer" { # frist instance spinning
   }
   provisioner "file" {
     source      = "script.sh"
-    destination = "/tmp"
+    destination = "/tmp/script.sh"
     connection {
     host        = "${aws_instance.TerraformExer.public_ip}"
     type        = "ssh"
     user        = "${var.INSTANCE_USERNAME}"
-    private_key = "${var.PATH_TO_PRIVATE_KEY}"
+    private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
   }
+  #  provisioner "remote-exec" {
+  #   inline = [
+  #     "chmod +x /tmp/script.sh",
+  #     "sudo /tmp/script.sh",
+  #   ]
+  # }
   # provisioner "local-exec"{
   #   command = "echo ${aws_instance.TerraformExer} >> test.txt"
   # }

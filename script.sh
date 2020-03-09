@@ -6,8 +6,10 @@ until [[ -f /var/lib/cloud/instance/boot-finished ]]; do
 done
 
 # install nginx
-apt-get update
-apt-get -y install nginx
+# apt-get update
+sudo yum update -y
+sudo yum install nginx
 
 # make sure nginx is started
-service nginx start
+# service nginx start
+sudo systemctl start nginx #systemd
